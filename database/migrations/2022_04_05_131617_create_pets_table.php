@@ -17,7 +17,7 @@ class CreatePetsTable extends Migration
             $table->id();
             $table->string("name");
             $table->string("type")->default("other");
-            $table->string("description");
+            $table->string("description")->nullable();
             $table->float("hourlyRate");
             $table->date("startDate");
             $table->date("endDate");
