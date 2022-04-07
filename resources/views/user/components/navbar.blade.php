@@ -9,7 +9,7 @@
         
         <section class="navbar__buttons">
             <a class="btn navbar__buttons-account" href="/account">
-                <span class="material-icons">
+                <span class="material-icons u-noselect">
                     person
                 </span> 
                 {{$user->name}}

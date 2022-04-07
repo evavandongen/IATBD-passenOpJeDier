@@ -11,7 +11,8 @@
         <section class="dashboard">
 
             <article class="dashboard__filters">
-                <h3>Type of animal</h3>
+                <h3>Filters</h3>
+                <h4>Type of pet</h4>
 
                 @foreach ($types_of_pets as $type)
 
@@ -32,8 +33,10 @@
             
             <article class="dashboard__petsList">
                 @foreach ($pets as $pet)
-                    @if ($pet->ownerId != $user->id)
-                        @include('user.components.pet-card')
+                    @if ($pet->ownerId != $user->id && $pet->sitterId != $user->id)
+                        <a href="/pets/{{$pet->id}}">
+                            @include('user.components.pet-card')
+                        </a>
                     @endif
                 @endforeach
             </article>

@@ -14,4 +14,13 @@ class UsersController extends Controller
             'types_of_pets' => \App\Models\TypeOfPet::all(),
         ]);
     }
+
+    public function account(){
+        return view('user.account', [
+            'user' => auth()->user(),
+            'users' => \App\Models\User::all(),
+            'pets' => \App\Models\Pet::all(),
+        ]);
+    }
 }
+

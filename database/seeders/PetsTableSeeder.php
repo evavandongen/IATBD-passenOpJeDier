@@ -33,5 +33,28 @@ class PetsTableSeeder extends Seeder
             'endDate'=>"2022-06-03",
             'ownerId'=>2,
         ]);
+
+        DB::table('pets')->insert([
+            'name'=> "Chico",
+            'type'=>"bird",
+            'description'=>"a real pain in the ass",
+            'hourlyRate'=>8.0,
+            'startDate'=>"2022-07-13",
+            'endDate'=>"2022-09-02",
+            'ownerId'=>2,
+            'sitterId'=>1,
+        ]);
+
+        DB::table('pets')->insert([
+            'name'=> "Bubble",
+            'type'=>"fish",
+            'description'=>"just keep swimming",
+            'hourlyRate'=>4.5,
+            'startDate'=>"2022-05-02",
+            'endDate'=>"2022-05-29",
+            'ownerId'=>1,
+            'sitterId'=>2,
+            'request'=>true,
+        ]);
     }
 }

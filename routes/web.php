@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth'])->group(function() {
     Route::get('/dashboard', [App\Http\Controllers\UsersController::class,'dashboard']);
+    Route::get('/account', [App\Http\Controllers\UsersController::class,'account']);
+    Route::get('/pets/{id}', [App\Http\Controllers\PetsController::class,'detail']);
 });
 
 Route::get('/', function () { return view('index'); });
