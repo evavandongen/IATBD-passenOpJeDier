@@ -12,9 +12,9 @@ class ReviewsController extends Controller
         $review->fromId = auth()->user()->id;
         try {
             $review->save();
-            return redirect('/accounts/' . $request->toId);
+            return redirect('/profile/' . $request->toId);
         } catch (Exception $e){
-            return redirect('/accounts/' . $request->toId);
+            return redirect('/profile/' . $request->toId);
         };
     }
 }
