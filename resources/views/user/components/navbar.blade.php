@@ -12,8 +12,16 @@
                 <span class="material-icons u-noselect">
                     person
                 </span> 
-                {{$user->name}}
+                {{$thisuser->name}}
             </a>
+
+            @if ($thisuser->role == "Admin")
+                <a class="btn navbar__buttons-admin" href="/admin">
+                    <span class="material-icons u-noselect">
+                        admin_panel_settings
+                    </span> 
+                </a>
+            @endif
 
             <form method="POST" action="{{route('logout')}}">
                 @csrf
@@ -24,6 +32,7 @@
                     logout
                 </a>
             </form>
+    
         </section>
 
     </section>

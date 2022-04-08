@@ -1,5 +1,5 @@
 @section('title')
-    {{"Passen op je Dier | $user->name" }}
+    {{"Passen op je Dier | $thisuser->name" }}
 @endsection
 
 @extends('baseview')
@@ -33,7 +33,7 @@
             
             <article class="dashboard__petsList">
                 @foreach ($pets as $pet)
-                    @if ($pet->ownerId != $user->id && $pet->sitterId != $user->id)
+                    @if ($pet->ownerId != $thisuser->id && $pet->sitterId != $thisuser->id)
                         <a href="/pets/{{$pet->id}}">
                             @include('user.components.pet-card')
                         </a>

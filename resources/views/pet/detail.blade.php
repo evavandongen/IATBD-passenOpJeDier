@@ -15,7 +15,8 @@
                 <span class="material-icons">
                     arrow_back
                 </span>
-                Go Back </a>
+                Go Back 
+            </a>
             
 
 
@@ -66,8 +67,18 @@
                         <p>{{$pet->hourlyRate}} per day</p>
                     </section>
 
-                    @if ($pet->ownerId != $user->id and $pet->sitterId != $user->id)
+
+                    @if ($pet->sitterId == null && $thisuser->id != $pet->ownerId)
                         <button class="btn petDetail__sendRequest-btn">I want to take care of this pet</button>
+                    @endif
+
+                    @if ($pet->sitterId == null && $pet->ownerId == $thisuser->id)
+                        <button class="btn petDetail__sendRequest-btn">Delete this pet</button>
+                    @endif
+
+                    @if ($user->id != $pet->sitterId && $pet->sitterId != null)
+                        <button class="btn petDetail__sendRequest-btn">This pet is back home</button>
+                    
                     @endif
                 </section>
 

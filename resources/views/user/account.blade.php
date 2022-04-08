@@ -1,5 +1,5 @@
 @section('title')
-    {{"Passen op je Dier | $user->name" }}
+    {{"Passen op je Dier | $thisuser->name" }}
 @endsection
 
 @extends('baseview')
@@ -11,14 +11,14 @@
         <section class="account">
             
             <section class="account__text">
-                <h2>Hi, {{$user->name}}</h2>
+                <h2>Hi, {{$thisuser->name}}</h2>
             </section>
 
             <section class="account__requests">
                 <h3>Requests</h3>
                 <section class="account__list-requests">
                     @foreach ($pets as $pet)
-                        @if ($pet->ownerId == $user->id && $pet->request)
+                        @if ($pet->ownerId == $thisuser->id && $pet->request)
                                 @include('user.components.request-card')
                         @endif
                     @endforeach
@@ -30,7 +30,7 @@
                     <h3>Owned pets</h3>
                     <section class="account__list">
                         @foreach ($pets as $pet)
-                            @if ($pet->ownerId == $user->id)
+                            @if ($pet->ownerId == $thisuser->id)
                                 <a href="/pets/{{$pet->id}}">
                                     @include('user.components.pet-card')
                                 </a>
@@ -43,7 +43,7 @@
                     <h3>Sitter pets</h3>
                     <section class="account__list">
                         @foreach ($pets as $pet)
-                            @if ($pet->sitterId == $user->id && !$pet->request)
+                            @if ($pet->sitterId == $thisuser->id && !$pet->request)
                                 <a href="/pets/{{$pet->id}}">
                                     @include('user.components.pet-card')
                                 </a>

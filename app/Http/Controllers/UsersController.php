@@ -9,7 +9,7 @@ class UsersController extends Controller
 {
     public function dashboard(){
         return view('user.dashboard', [
-            'user' => auth()->user(),
+            'thisuser' => auth()->user(),
             'pets' => \App\Models\Pet::all(),
             'types_of_pets' => \App\Models\TypeOfPet::all(),
         ]);
@@ -17,9 +17,25 @@ class UsersController extends Controller
 
     public function account(){
         return view('user.account', [
-            'user' => auth()->user(),
+            'thisuser' => auth()->user(),
             'users' => \App\Models\User::all(),
             'pets' => \App\Models\Pet::all(),
+        ]);
+    }
+
+    public function detail($id){
+        return view('user.detail', [
+            'thisuser' => auth()->user(),
+            'allUsers' => \App\Models\User::all(),
+            'user'=> \App\Models\User::find($id),
+            'reviews' => \App\Models\Review::all()
+        ]);
+    }
+
+    public function admin(){
+        return view('admin.admin', [
+            'thisuser' => auth()->user(),
+            'users' => \App\Models\User::all(),
         ]);
     }
 }
