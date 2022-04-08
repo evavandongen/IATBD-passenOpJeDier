@@ -332,9 +332,14 @@ a.goBack{
             grid-template-columns: 1fr;
             margin-bottom: 3rem;
         }
+        .account__list-requests{
+            grid-template-columns: 1fr 1fr;
+        }
     }
     @media screen and (max-width: 600px) {
-        
+        .account__list-requests{
+            grid-template-columns: 1fr;
+        }
     }
 
 /* ------ User profile ------ */

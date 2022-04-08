@@ -17,7 +17,7 @@ class PetsTableSeeder extends Seeder
         DB::table('pets')->insert([
             'name'=> "Puk",
             'type'=>"cat",
-            'description'=>"small black cat who loves to be outside",
+            'description'=>"a small little bitch",
             'hourlyRate'=>4.5,
             'startDate'=>"2022-04-15",
             'endDate'=>"2022-04-27",
@@ -55,6 +55,18 @@ class PetsTableSeeder extends Seeder
             'ownerId'=>1,
             'sitterId'=>2,
             'request'=>true,
+        ]);
+
+        DB::table('pets')->insert([
+            'name'=> "kermit",
+            'type'=>"amphibian",
+            'description'=>"they call him Kermit the frog",
+            'hourlyRate'=>7.5,
+            'startDate'=>"2022-08-02",
+            'endDate'=>"2022-08-08",
+            'ownerId'=>1,
+            'sitterId'=>2,
+            'request'=>false,
         ]);
     }
 }
