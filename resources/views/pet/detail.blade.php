@@ -36,12 +36,15 @@
                         <p>{{$pet->type}}</p>
                     </section>
                     <section class="petDetail__text-owner" >
-                        <span class="material-icons u-noselect">
-                            person
-                        </span>
                         @foreach ($users as $user)
                             @if ($user->id == $pet->ownerId)
-                                <p>{{$user->name}}</a></p>
+                                <a href="/accounts/{{$user->id}}">
+                                    <span class="material-icons u-noselect">
+                                        person
+                                    </span>
+                                
+                                    <p>{{$user->name}}</p>
+                                </a>
                             @endif
                         @endforeach
                     </section>
@@ -67,18 +70,16 @@
                         <p>{{$pet->hourlyRate}} per day</p>
                     </section>
 
-
                     @if ($pet->sitterId == null && $thisuser->id != $pet->ownerId)
-                        <button class="btn petDetail__sendRequest-btn">I want to take care of this pet</button>
+                        <button class="btn petDetail__btn">I want to take care of this pet</button>
                     @endif
 
                     @if ($pet->sitterId == null && $pet->ownerId == $thisuser->id)
-                        <button class="btn petDetail__sendRequest-btn">Delete this pet</button>
+                        <a class="btn petDetail__btn" href="/pet/delete/{{$pet->id}} "> Delete this pet</a>
                     @endif
 
-                    @if ($user->id != $pet->sitterId && $pet->sitterId != null)
-                        <button class="btn petDetail__sendRequest-btn">This pet is back home</button>
-                    
+                    @if ($pet->sitterId != null && $pet->ownerId != $thisuser->id)
+                        <button class="btn petDetail__btn">This pet is back home</button>
                     @endif
                 </section>
 

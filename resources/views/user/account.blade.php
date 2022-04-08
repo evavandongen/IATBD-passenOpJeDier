@@ -37,6 +37,7 @@
                             @endif
                         @endforeach
                     </section>
+                    <a class="btn account__addPet" href="/pet/create">Add new pet</a>
                 </section>
 
                 <section class="account__list-sitter">

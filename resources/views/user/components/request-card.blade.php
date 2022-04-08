@@ -9,14 +9,27 @@
         @endforeach
     </section>
     <section class="requestCard__reject">
-        <span class="material-icons u-noselect">
-            cancel
-        </span>
+        <form action="/pet/request/reject/{{$pet->id}}" method="POST">
+            @method('patch')
+            @csrf
+            <button type="submit" class="requestCard__btn">
+                <span class="material-icons u-noselect">
+                    cancel
+                </span>
+            </button>
+        </form>
+        
     </section>
     <section class="requestCard__accept">
-        <span class="material-icons u-noselect">
-            check_circle
-        </span>
+        <form action="/pet/request/accept/{{$pet->id}}" method="POST">
+            @method('patch')
+            @csrf
+            <button type="submit" class="requestCard__btn">
+                <span class="material-icons u-noselect">
+                    check_circle
+                </span>
+            </button>
+        </form>
     </section>
     
 </article>

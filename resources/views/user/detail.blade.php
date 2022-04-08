@@ -34,7 +34,7 @@
                         @endforeach
                     </section>
 
-                    <form class="userDetail__reviews-form" >
+                    <form class="userDetail__reviews-form" action="/review" method="POST" >
                         @csrf
                         <section class="reviews-form__section">
                             <label for="review">Write a review for {{$user->name}}</label>
@@ -43,7 +43,7 @@
                         
                         <input type="hidden" id="toId" name="toId" value="{{$user->id}}">
 
-                        <input type="hidden" id="fromId" name="fromId" value="{{$thisuser->id}}">
+                        {{-- <input type="hidden" id="fromId" name="fromId" value="{{$thisuser->id}}"> --}}
 
                         <section class="reviews-form__section">
                             <button class="btn" type="submit">Post review</button>
