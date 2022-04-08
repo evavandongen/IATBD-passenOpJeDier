@@ -6,6 +6,7 @@
 @section('content')
 
     <main class="create__wrapper">
+
         @include('user.components.navbar')
 
         <article class="create">
@@ -60,5 +61,6 @@
                 </section>
 
             </form>
+            
         </article>
     </main>

@@ -38,7 +38,7 @@
                         @foreach ($users as $user)
                             @if ($user->id == $pet->ownerId)
                                 @if ($user->id != $thisuser->id)
-                                    <a href="/accounts/{{$user->id}}">
+                                    <a href="/profile/{{$user->id}}">
                                         <span class="material-icons u-noselect">
                                             person
                                         </span>
@@ -100,7 +100,6 @@
                                 This pet is back home
                             </button>
                         </form>
-                        {{-- <button class="btn petDetail__btn">This pet is back home</button> --}}
                     @endif
                 </section>
 

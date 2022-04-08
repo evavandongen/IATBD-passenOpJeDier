@@ -24,7 +24,7 @@ class UsersController extends Controller
     }
 
     public function detail($id){
-        return view('user.detail', [
+        return view('user.profile', [
             'thisuser' => auth()->user(),
             'allUsers' => \App\Models\User::all(),
             'user'=> \App\Models\User::find($id),

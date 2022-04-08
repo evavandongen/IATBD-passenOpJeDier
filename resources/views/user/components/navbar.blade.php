@@ -12,7 +12,7 @@
                 <span class="material-icons u-noselect">
                     person
                 </span> 
-                {{$thisuser->name}}
+                <span class="navbar__buttons-account-name"> {{$thisuser->name}} </span>
             </a>
 
             @if ($thisuser->role == "Admin")

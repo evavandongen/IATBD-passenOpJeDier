@@ -5,10 +5,10 @@
 @extends('baseview')
 @section('content')
 
-    <main class="userDetail__wrapper">
+    <main class="userProfile__wrapper">
         @include('user.components.navbar')
 
-        <section class="userDetail">
+        <section class="userProfile">
 
             <a class="goBack" href="/dashboard">
                 <span class="material-icons">
@@ -17,16 +17,16 @@
                 Back to home 
             </a>
             
-            <section class="userDetail__header">
+            <section class="userProfile__header">
                 <h2>This is {{$user->name}}</h2>
             </section>
 
-            <section class="userDetail__content">
+            <section class="userProfile__content">
 
-                <section class="userDetail__reviews">
+                <section class="userProfile__reviews">
                     <h3>Reviews</h3>
                     
-                    <section class="userDetail__list-reviews">
+                    <section class="userProfile__list-reviews">
                         @foreach ($reviews as $review)
                             @if ($review->toId == $user->id)
                                 @include('user.components.review-card')
@@ -34,7 +34,7 @@
                         @endforeach
                     </section>
 
-                    <form class="userDetail__reviews-form" action="/review" method="POST" >
+                    <form class="userProfile__reviews-form" action="/review" method="POST" >
                         @csrf
                         <section class="reviews-form__section">
                             <label for="review">Write a review for {{$user->name}}</label>
@@ -53,17 +53,17 @@
                 
                 </section>
 
-                <section class="userDetail__images">
-                    <figure class="userDetail__image">
+                <section class="userProfile__images">
+                    <figure class="userProfile__image">
                         <img src="../../img/home/01.jpg" alt="">
                     </figure>
-                    <figure class="userDetail__image">
+                    <figure class="userProfile__image">
                         <img src="../../img/home/02.jpg" alt="">
                     </figure>
-                    <figure class="userDetail__image">
+                    <figure class="userProfile__image">
                         <img src="../../img/home/03.jpg" alt="">
                     </figure>
-                    <figure class="userDetail__image">
+                    <figure class="userProfile__image">
                         <img src="../../img/home/04.jpg" alt="">
                     </figure>
                 </section>

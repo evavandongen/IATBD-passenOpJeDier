@@ -88,6 +88,7 @@ a.goBack{
 
 
 
+
 /* Index */
 .index__wrapper{
     display: flex;
@@ -113,19 +114,19 @@ a.goBack{
     }
 .index__header{
     color: var(--clr-purple);
-    font-family: var(--ff-primary);
-    font-size: 2.6rem;
 }
 .index__text{
     font-size: 1.6rem;
     font-weight: 500;
+    text-align: center;
 }
 .index__login-register{
     margin-top: 2rem;
-    width: 25%;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
     font-weight: 600;
     font-size: 1rem;
 }
@@ -145,7 +146,19 @@ a.goBack{
         box-shadow: 0px 0px 10px var(--clr-cyan);
     }
 
-/* user -> dashboard */
+    /* media queries */
+    @media screen and (max-width: 600px) {
+        .index__header h1{
+            font-size: 2rem;
+        }
+        .index__text{
+            font-size: 1rem;
+        }
+    }
+
+
+/* ------ Dashboard ------ */
+
 .dashboard__wrapper{
     width: 100%;
     height: 100%;
@@ -159,17 +172,11 @@ a.goBack{
     max-width: var(--max-width);
     display: flex;
     justify-content: center;
-    gap: 2%;
-}
-.dashboard__petsList{
-    width: 79%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 3rem;
+    align-items: flex-start;
+    gap: 3rem;
 }
 .dashboard__filters{
-    width: 19%;
+    width: 18%;
     margin-top: 3rem;
     padding: 1rem;
     display: grid;
@@ -212,7 +219,45 @@ a.goBack{
         transform: scale(1);
     }
 
-/* user -> account */
+.dashboard__petsList{
+    width: 79%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+    list-style: none;
+}
+
+    /* media queries */
+    @media screen and (max-width: 800px) {
+        .dashboard{
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .dashboard__filterList{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 2rem;
+        }
+        .dashboard__petsList{
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .dashboard__petsList{
+            margin-top: 1rem;
+            grid-template-columns: 1fr;
+        }
+        .dashboard__filterList{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+
+/* ------ Account ------ */
 .account__wrapper{
     width: 100%;
     height: 100%;
@@ -258,7 +303,7 @@ a.goBack{
     width: 80%;
     display: grid;
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 .account__addPet {
     background-color: var(--clr-purple);
@@ -270,8 +315,30 @@ a.goBack{
         box-shadow: 0 0 10px var(--clr-purple);
     }
 
-/* user -> detail */
-.userDetail__wrapper{
+    /* media queries */
+    @media screen and (max-width: 1000px) {
+        .account__lists{
+            gap: 1rem;
+        }
+        .account__list{
+            width: 100%;
+        }
+        .account__addPet{
+            width: 100%;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        .account__lists{
+            grid-template-columns: 1fr;
+            margin-bottom: 3rem;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        
+    }
+
+/* ------ User profile ------ */
+.userProfile__wrapper{
     width: 100%;
     height: 100%;
     display: flex;
@@ -279,45 +346,44 @@ a.goBack{
     align-items: center;
     gap: 3rem;
 }
-.userDetail{
+.userProfile{
     width: 100%;
     padding: 0 1rem;
     max-width: var(--max-width);
 }
-.userDetail__content{
+.userProfile__content{
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-top: 1rem;
 }
-.userDetail__reviews{
+.userProfile__reviews{
     width: 80%;
 }
-.userDetail__list-reviews{
+.userProfile__list-reviews{
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
-.userDetail__images{
+.userProfile__images{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-    height: 100px;
 }
-.userDetail__image{
+.userProfile__image{
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: 0.2s all ease;
 }
-.userDetail__image img{
+.userProfile__image img{
     width: 100%;
     height: 100%;
     border-radius: 1rem;
 }
-    .userDetail__image:hover{
+    .userProfile__image:hover{
         transform: scale(1.2);
     }
-.userDetail__reviews-form{
+.userProfile__reviews-form{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -344,211 +410,37 @@ a.goBack{
     background: var(--clr-purple);
 }
 
-/*  admin */
-.admin__wrapper{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3rem;
-}
-.admin{
-    width: 100%;
-    padding: 0 1rem;
-    max-width: var(--max-width);
-}
-.admin__list-users{
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    margin-top: 1rem;
-}
-.admin__user{
-    background: var(--clr-grey);
-    padding: 1rem;
-    border-radius: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-}
-.admin__block-btn{
-    background: var(--clr-purple);
-}
-    .admin__block-btn:hover{
-        box-shadow: 0px 0px 10px var(--clr-purple);
+    /* media queries */
+    @media screen and (max-width: 1000px) {
+        .userProfile__reviews{
+            width: 90%;
+        }
+    }
+    @media screen and (max-width: 800px) {
+        .userProfile__content{
+            grid-template-columns: 1fr;
+            row-gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        .userProfile__reviews{
+            width: 100%;
+            grid-row: 2;
+            margin-bottom: 3rem;
+        }
+        .userProfile__images{
+            grid-row: 1;
+            margin-bottom: 2rem;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .userProfile__images{
+            grid-template-columns: 1fr;
+        }
     }
 
 
-/* user -> components -> navbar */
-.navbar__wrapper{
-    width: 100%;
-    height: 3rem;
-    background: var(--clr-white);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
-}
-.navbar{
-    width: 100%;
-    height: 100%;
-    max-width: var(--max-width);
-    padding: 0 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.navbar__logo{
-    height: 80%;
-}
-    .navbar__logo img{
-        height: 100%;
-    }
+/* ------ Pet Detail ------ */
 
-.navbar__buttons{
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    height: 100%;
-}
-.navbar__buttons-account{
-    background: var(--clr-grey);
-    color: var(--clr-purple);
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: flex;
-    align-items:center;
-    gap: 0.3rem;
-    height: 80%;
-}
-.navbar__buttons-logout{
-    background: var(--clr-purple);
-    color: var(--clr-white);
-    font-size: 0.8rem;
-    font-weight: 600;
-    display: flex;
-    align-items:center;
-    gap: 0.3rem;
-    height: 80%;
-    transition: 0.2s all ease;
-}
-    .navbar__buttons-logout:hover{
-        box-shadow: 0px 0px 10px var(--clr-purple);
-    }
-
-.navbar__buttons-admin{
-    padding: 0.5rem;
-    background: var(--clr-yellow);
-    color: var(--clr-white);
-    display: flex;
-    align-items:center;
-    height: 80%;
-}
-    .navbar__buttons-admin:hover{
-        box-shadow: 0px 0px 10px var(--clr-yellow);
-    }
-
-
-/* user -> components -> pet-card */
-.petCard {
-    height: 8rem;
-    width: 100%;
-    display: flex;
-    gap: 1rem;
-    background: var(--clr-yellow);
-    padding: 1rem;
-    border-radius: 10px;
-    transition: 0.3s all ease;
-}
-    .petCard:hover {
-        transform: scale(1.05);
-    }
-.petCard__image {
-    height: 6rem;
-    width: 6rem;
-    background: var(--clr-white);
-    border-radius: 0.5rem;
-    object-fit: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-    .petCard__image img {
-        height: 80%;
-        width: 80%;
-    }
-.petCard__text{
-    color: var(--clr-white);
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-.petCard__text-type{
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    color: var(--clr-purple);
-    font-weight: 600;
-}
-.petCard__dates{
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 14px;
-    color: var(--clr-purple);
-}
-
-/* users -> components -> review-card */
-.reviewCard{
-    background: var(--clr-grey);
-    padding: 0.5rem 1rem ;
-    border-radius: 0.5rem;
-}
-.reviewCard__text p{
-    font-size: 12px;
-}
-.reviewCard__text-from{
-    color: var(--clr-purple);
-    font-weight: 500;
-}
-.review__text p a{
-    font-weight: 600;
-    color: var(--clr-purple);
-}
-/* users -> components -> request-card */
-.requestCard{
-    background: var(--clr-grey);
-    padding: 0.5rem 1rem ;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-.requestCard__text p{
-    font-size: 12px;
-}
-.requestCard__text p a{
-    font-weight: 600;
-    color: var(--clr-purple);
-}
-
-.requestCard__accept, .requestCard__reject{
-    transform: translateY(5px);
-}
-.requestCard__btn{
-    border: none;
-    background: transparent;
-    cursor: pointer;
-    transition: 0.2s all ease;
-}
-    .requestCard__btn:hover{
-        color: var(--clr-cyan);
-    }
-
-
-/* pet -> detail */
 .petDetail__wrapper{
     width: 100%;
     height: 100%;
@@ -619,18 +511,38 @@ a.goBack{
         box-shadow: 0px 0px 10px var(--clr-purple);
     }
 
+    /* media queries */
+    @media screen and (max-width: 800px) {
+        .petDetail__text-type,.petDetail__text-owner, .petDetail__text-owner a, .petDetail__text-dates, .petDetail__text-rate{
+            font-size: 1rem;
+        }
+        .petDetail__text-description{
+            font-size: 1rem;
+        }
+        
+    }
+    @media screen and (max-width: 600px) {
+        .petDetail__card{
+            grid-template-columns: 1fr;
+            margin-bottom: 3rem;
+        }
+        .petDetail__image{
+            width: 100%;
+        }
+    }
 
-/* pet -> create */
+
+/* ------ Create Pet ------ */
+
 .create__wrapper{
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3rem;
 }
 .create{
-    width: 100%;
+    width: 95%;
     padding: 0 1rem;
     max-width: var(--max-width);
     display: flex;
@@ -683,7 +595,76 @@ a.goBack{
         box-shadow: 0 0 10px var(--clr-purple);
     }
 
-/* blocked */
+     /* media queries */
+    @media screen and (max-width: 800px) {
+        .create{
+            margin-bottom: 3rem;
+        }
+        .create__form{
+            gap: 1rem;
+        }
+    }
+    @media screen and (max-width: 600px) {
+        .create__form{
+            grid-template-columns: 1fr;
+        }
+        .create__form-section{
+            width: 100%;
+        }
+    }
+
+/*  ------ admin ------ */
+
+.admin__wrapper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+.admin{
+    width: 100%;
+    padding: 0 1rem;
+    max-width: var(--max-width);
+}
+.admin__list-users{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+.admin__user{
+    background: var(--clr-grey);
+    padding: 1rem;
+    border-radius: 1rem;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    align-items: center;
+}
+.admin__block-btn{
+    background: var(--clr-purple);
+}
+    .admin__block-btn:hover{
+        box-shadow: 0px 0px 10px var(--clr-purple);
+    }
+
+    /* media queries */
+    @media screen and (max-width: 800px) {
+        .admin__list-users{
+            grid-template-columns: 1fr;
+        }
+    }
+    @media screen and (max-width: 500px) {
+        .admin__user{
+            grid-template-columns: 1fr;
+            row-gap: 0.5rem;
+        }
+    }
+
+
+/* ------ blocked ------ */
 .blocked__wrapper{
     width: 100%;
     height: 100%;
@@ -717,5 +698,205 @@ a.goBack{
 .blocked__text h2{
     color: var(--clr-purple);
 }
+    /* media queries */
+    @media screen and (max-width: 600px) {
+        .blocked__text h2{
+            font-size: 1.5rem;
+        }
+    }
+
+    
+/* ------ components :: navbar */
+
+.navbar__wrapper{
+    width: 100%;
+    height: 3rem;
+    background: var(--clr-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1rem rgba(0,0,0,0.3);
+}
+.navbar{
+    width: 100%;
+    height: 100%;
+    max-width: var(--max-width);
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.navbar__logo{
+    height: 80%;
+}
+    .navbar__logo img{
+        height: 100%;
+    }
+
+.navbar__buttons{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    height: 100%;
+}
+.navbar__buttons-account{
+    background: var(--clr-grey);
+    color: var(--clr-purple);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items:center;
+    gap: 0.3rem;
+    height: 80%;
+}
+.navbar__buttons-logout{
+    background: var(--clr-purple);
+    color: var(--clr-white);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items:center;
+    gap: 0.3rem;
+    height: 80%;
+    transition: 0.2s all ease;
+}
+    .navbar__buttons-logout:hover{
+        box-shadow: 0px 0px 10px var(--clr-purple);
+    }
+
+.navbar__buttons-admin{
+    padding: 0.5rem;
+    background: var(--clr-yellow);
+    color: var(--clr-white);
+    display: flex;
+    align-items:center;
+    height: 80%;
+}
+    .navbar__buttons-admin:hover{
+        box-shadow: 0px 0px 10px var(--clr-yellow);
+    }
+
+    /* media queries */
+    @media screen and (max-width: 600px) {
+        .navbar__buttons-account-name{
+            display: none;
+        }
+    }
+
+
+/* ------ components :: pet-card */
+
+.petCard {
+    height: 8rem;
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    background: var(--clr-yellow);
+    padding: 1rem;
+    border-radius: 10px;
+    transition: 0.3s all ease;
+    position: relative;
+}
+    .petCard:hover {
+        transform: scale(1.05);
+    }
+.petCard__image {
+    height: 6rem;
+    width: 6rem;
+    background: var(--clr-white);
+    border-radius: 0.5rem;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    .petCard__image img {
+        height: 80%;
+        width: 80%;
+    }
+.petCard__text{
+    color: var(--clr-white);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+.petCard__text h3{
+    color: var(--clr-white);
+}
+.petCard__text-type{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--clr-purple);
+    font-weight: 600;
+}
+.petCard__dates{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 14px;
+    color: var(--clr-purple);
+}
+.petCard__admin-delete{
+    position: absolute;
+    right:1rem;
+}
+.petCard__admin-delete a {
+    transition: 0.2s all ease;
+    color: var(--clr-white);
+}
+    .petCard__admin-delete a:hover{
+        color: var(--clr-purple);
+    }
+
+/* ------ components :: review-card */
+
+.reviewCard{
+    background: var(--clr-grey);
+    padding: 0.5rem 1rem ;
+    border-radius: 0.5rem;
+}
+.reviewCard__text p{
+    font-size: 12px;
+}
+.reviewCard__text-from{
+    color: var(--clr-purple);
+    font-weight: 500;
+}
+.review__text p a{
+    font-weight: 600;
+    color: var(--clr-purple);
+}
+
+/* ------ components :: request-card */
+
+.requestCard{
+    background: var(--clr-grey);
+    padding: 0.5rem 1rem ;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.requestCard__text p{
+    font-size: 12px;
+}
+.requestCard__text p a{
+    font-weight: 600;
+    color: var(--clr-purple);
+}
+
+.requestCard__accept, .requestCard__reject{
+    transform: translateY(5px);
+}
+.requestCard__btn{
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: 0.2s all ease;
+}
+    .requestCard__btn:hover{
+        color: var(--clr-cyan);
+    }
 
 

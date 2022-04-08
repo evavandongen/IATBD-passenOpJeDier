@@ -18,6 +18,17 @@
             </span>
             <p>{{date("d/m/y", strtotime($pet->startDate))}} - {{date("d/m/y", strtotime($pet->endDate))}}</p>
         </section>
+    
+        @if ($thisuser->role = "Admin")
+            <section class="petCard__admin-delete">
+                <a href="/pet/delete/{{$pet->id}}"> 
+                    <span class="material-icons u-noselect">
+                        cancel
+                    </span>
+                </a>
+            </section>
+        @endif
     </section>
+    
     
 </article>

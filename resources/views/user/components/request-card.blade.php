@@ -4,7 +4,7 @@
         <h4>{{$pet->name}}</h4>
         @foreach ($users as $user)
             @if ($user->id == $pet->sitterId)
-                <p>request by: <a href="/accounts/{{$user->id}}">{{$user->name}}</a></p>
+                <p>request by: <a href="/profile/{{$user->id}}">{{$user->name}}</a></p>
             @endif
         @endforeach
     </section>

@@ -29,7 +29,7 @@ Route::middleware(['auth','blocked'])->group(function() {
     
     Route::get('/account', [App\Http\Controllers\UsersController::class,'account']);
 
-    Route::get('/accounts/{id}', [App\Http\Controllers\UsersController::class,'detail']);
+    Route::get('/profile/{id}', [App\Http\Controllers\UsersController::class,'detail']);
 
     Route::post('/review', [App\Http\Controllers\ReviewsController::class,'store']);
 });
