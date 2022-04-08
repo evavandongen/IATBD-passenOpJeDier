@@ -18,14 +18,14 @@
 
                     @if ($type->type != "other")
                     <section class="dashboard__filter">
-                        <input type="checkbox" id="{{$type->type}}" name="{{$type->type}}">
+                        <input class="js--dashboardFilter" type="checkbox" id="{{$type->type}}" name="{{$type->type}}" data-type="{{$type->type}}">
                         <label for="{{$type->type}}">{{$type->type}}</label>
                     </section>
                     @endif
 
                 @endforeach
                 <section class="dashboard__filter">
-                    <input type="checkbox" id="other" name="other">
+                    <input class="js--dashboardFilter" type="checkbox" id="other" name="other" data-type="other">
                     <label for="other">other</label>
                 </section>
 
@@ -35,7 +35,9 @@
                 @foreach ($pets as $pet)
                     @if ($pet->ownerId != $thisuser->id && $pet->sitterId != $thisuser->id)
                         <a href="/pets/{{$pet->id}}">
-                            @include('user.components.pet-card')
+                            <section class="js--dashboardPetCard" data-type-of-pet="{{$pet->type}}">
+                                @include('user.components.pet-card')
+                            </section>
                         </a>
                     @endif
                 @endforeach

@@ -1,4 +1,4 @@
-<article class="petCard" data-type-of-pet="{{$pet->type}}">
+<article class="petCard">
 
     <figure class="petCard__image">
         <img src="{{$pet->image}}" alt="pet image">

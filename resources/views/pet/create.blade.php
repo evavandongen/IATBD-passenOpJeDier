@@ -10,12 +10,11 @@
 
         <article class="create">
 
-            <a class="goBack" href="{{ url()->previous()}}">
-                
+            <a class="goBack" href="/dashboard">
                 <span class="material-icons">
                     arrow_back
                 </span>
-                Go Back 
+                Back to home 
             </a>
             
             <h2>Add new pet</h2>

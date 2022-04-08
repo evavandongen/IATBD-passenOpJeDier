@@ -10,11 +10,11 @@
 
         <section class="userDetail">
 
-            <a class="goBack" href="{{ url()->previous()}}">
+            <a class="goBack" href="/dashboard">
                 <span class="material-icons">
                     arrow_back
                 </span>
-                Go Back 
+                Back to home 
             </a>
             
             <section class="userDetail__header">

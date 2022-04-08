@@ -38,8 +38,6 @@
                                     </button>
                                 </form>
                             @endif
-                            
-                            {{-- <button class="btn admin__block-btn">Block user</button> --}}
                         @endif
 
                     </section>
