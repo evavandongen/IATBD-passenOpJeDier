@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth','blocked'])->group(function() {
     
     Route::patch('/pet/home/{id}', [App\Http\Controllers\PetsController::class,'home']);
     Route::patch('/pet/request/reject/{id}', [App\Http\Controllers\PetsController::class,'reject']);
@@ -35,9 +35,13 @@ Route::middleware(['auth'])->group(function() {
 });
 
 
-Route::middleware(['admin'])->group(function() {
-    Route::get('/admin', [App\Http\Controllers\UsersController::class,'admin']);
+Route::middleware(['auth','admin', 'blocked'])->group(function() {
+    Route::patch('/admin/block/{id}', [App\Http\Controllers\AdminController::class,'block']);
+    Route::patch('/admin/unblock/{id}', [App\Http\Controllers\AdminController::class,'unblock']);
+    Route::get('/admin', [App\Http\Controllers\AdminController::class,'admin']);
 });
+
+Route::get('/blocked', [App\Http\Controllers\UsersController::class,'blocked']);
 
 Route::get('/', function () { return view('index'); });
 

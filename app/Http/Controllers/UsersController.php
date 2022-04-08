@@ -32,10 +32,9 @@ class UsersController extends Controller
         ]);
     }
 
-    public function admin(){
-        return view('admin.admin', [
-            'thisuser' => auth()->user(),
-            'users' => \App\Models\User::all(),
+    public function blocked(){
+        return view('blocked', [
+            'thisuser' => auth()->user()
         ]);
     }
 }

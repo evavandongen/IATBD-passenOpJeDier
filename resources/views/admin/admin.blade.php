@@ -19,7 +19,29 @@
                         <h3>{{$user->name}}</h3>
                         <p>ID: {{$user->id}}</p>
                         <p>{{$user->email}}</p>
-                        <button class="btn admin__block-btn">Block user</button>
+
+                        @if ($user->id != $thisuser->id)
+                            @if ($user->blocked)
+                                <form action="/admin/unblock/{{$user->id}}" method="POST">
+                                    @method('patch')
+                                    @csrf
+                                    <button type="submit" class="btn admin__block-btn">
+                                        Unblock user
+                                    </button>
+                                </form>
+                            @else
+                                <form action="/admin/block/{{$user->id}}" method="POST">
+                                    @method('patch')
+                                    @csrf
+                                    <button type="submit" class="btn admin__block-btn">
+                                        Block user
+                                    </button>
+                                </form>
+                            @endif
+                            
+                            {{-- <button class="btn admin__block-btn">Block user</button> --}}
+                        @endif
+
                     </section>
                 @endforeach
                 
