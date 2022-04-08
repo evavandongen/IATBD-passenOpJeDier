@@ -47,6 +47,33 @@ class PetsController extends Controller
 
     }
 
+    public function request($id){
+        $pet = \App\Models\Pet::find($id);
+
+        $pet->request = true;
+        $pet->sitterId = auth()->user()->id;
+
+        try {
+            $pet->save();
+            return redirect('/dashboard');
+        } catch (Exception $e){
+            return redirect('/pets/'.$id);
+        };
+    }
+
+    public function home($id){
+        $pet = \App\Models\Pet::find($id);
+
+        $pet->sitterId = null;
+
+        try {
+            $pet->save();
+            return redirect('/account');
+        } catch (Exception $e){
+            return redirect('/account');
+        };
+    }
+
     public function reject($id){
         $pet = \App\Models\Pet::find($id);
 

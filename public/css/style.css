@@ -593,7 +593,7 @@ a.goBack{
 .petDetail__text h3{
     margin-top: 0.8rem;
 }
-.petDetail__text-type, .petDetail__text-owner a, .petDetail__text-dates, .petDetail__text-rate{
+.petDetail__text-type,.petDetail__text-owner, .petDetail__text-owner a, .petDetail__text-dates, .petDetail__text-rate{
     font-size: 1.2rem;
     display: flex;
     align-items: center;

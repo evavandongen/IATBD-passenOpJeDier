@@ -14,23 +14,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth'])->group(function() {
-    Route::get('/pet/create', [App\Http\Controllers\PetsController::class,'create']);
-    Route::get('/dashboard', [App\Http\Controllers\UsersController::class,'dashboard']);
-    Route::get('/pets/{id}', [App\Http\Controllers\PetsController::class,'detail']);
-    Route::get('/accounts/{id}', [App\Http\Controllers\UsersController::class,'detail']);
-
+    
+    Route::patch('/pet/home/{id}', [App\Http\Controllers\PetsController::class,'home']);
     Route::patch('/pet/request/reject/{id}', [App\Http\Controllers\PetsController::class,'reject']);
     Route::patch('/pet/request/accept/{id}', [App\Http\Controllers\PetsController::class,'accept']);
+    Route::patch('/pet/request/{id}', [App\Http\Controllers\PetsController::class,'request']);
+    Route::get('/pet/create', [App\Http\Controllers\PetsController::class,'create']);
+    Route::get('/pet/delete/{id}',[App\Http\Controllers\PetsController::class,'delete']);
+    Route::get('/pets/{id}', [App\Http\Controllers\PetsController::class,'detail']);
+    Route::post('/pet', [App\Http\Controllers\PetsController::class,'store']);
 
+
+    Route::get('/dashboard', [App\Http\Controllers\UsersController::class,'dashboard']);
+    
     Route::get('/account', [App\Http\Controllers\UsersController::class,'account']);
 
-    Route::get('/pet/delete/{id}',[App\Http\Controllers\PetsController::class,'delete']);
-    Route::post('/pet', [App\Http\Controllers\PetsController::class,'store']);
+    Route::get('/accounts/{id}', [App\Http\Controllers\UsersController::class,'detail']);
 
     Route::post('/review', [App\Http\Controllers\ReviewsController::class,'store']);
 });
 
-Route::middleware(['auth'])->group(function() {
+
+Route::middleware(['admin'])->group(function() {
     Route::get('/admin', [App\Http\Controllers\UsersController::class,'admin']);
 });
 

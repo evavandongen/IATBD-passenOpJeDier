@@ -29,7 +29,7 @@
                     <section class="userDetail__list-reviews">
                         @foreach ($reviews as $review)
                             @if ($review->toId == $user->id)
-                            @include('user.components.review-card')
+                                @include('user.components.review-card')
                             @endif
                         @endforeach
                     </section>

@@ -38,13 +38,22 @@
                     <section class="petDetail__text-owner" >
                         @foreach ($users as $user)
                             @if ($user->id == $pet->ownerId)
-                                <a href="/accounts/{{$user->id}}">
-                                    <span class="material-icons u-noselect">
-                                        person
-                                    </span>
-                                
-                                    <p>{{$user->name}}</p>
-                                </a>
+                                @if ($user->id != $thisuser->id)
+                                    <a href="/accounts/{{$user->id}}">
+                                        <span class="material-icons u-noselect">
+                                            person
+                                        </span>
+                                    
+                                        <p>{{$user->name}}</p>
+                                    </a>
+                                @else
+                                        <span class="material-icons u-noselect">
+                                            person
+                                        </span>
+                                    
+                                        <p>{{$user->name}}</p>
+                                @endif
+
                             @endif
                         @endforeach
                     </section>
@@ -71,7 +80,13 @@
                     </section>
 
                     @if ($pet->sitterId == null && $thisuser->id != $pet->ownerId)
-                        <button class="btn petDetail__btn">I want to take care of this pet</button>
+                        <form action="/pet/request/{{$pet->id}}" method="POST">
+                            @method('patch')
+                            @csrf
+                            <button type="submit" class="btn petDetail__btn">
+                                I want to take care of this pet
+                            </button>
+                        </form>
                     @endif
 
                     @if ($pet->sitterId == null && $pet->ownerId == $thisuser->id)
@@ -79,7 +94,14 @@
                     @endif
 
                     @if ($pet->sitterId != null && $pet->ownerId != $thisuser->id)
-                        <button class="btn petDetail__btn">This pet is back home</button>
+                        <form action="/pet/home/{{$pet->id}}" method="POST">
+                            @method('patch')
+                            @csrf
+                            <button type="submit" class="btn petDetail__btn">
+                                This pet is back home
+                            </button>
+                        </form>
+                        {{-- <button class="btn petDetail__btn">This pet is back home</button> --}}
                     @endif
                 </section>
 
